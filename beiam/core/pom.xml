@@ -17,6 +17,12 @@
             <groupId>com.dms.beaim</groupId>
             <artifactId>api-adapter</artifactId>
             <version>${project.parent.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.dms.beaim</groupId>
+                    <artifactId>api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
