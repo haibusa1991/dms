@@ -1,7 +1,7 @@
-package com.dms.beiam.rest.controllers;
+package com.dms.beiam.restapi.controllers;
 
-import com.dms.beiam.apiadapter.AuthApiRestApiAdapter;
-import com.dms.beiam.rest.base.BaseRestController;
+import com.dms.beiam.restapi.base.BaseRestController;
+import com.dms.beiam.restapi.base.adapters.AuthenticationAdapter;
 import com.dms.beiam.restapi.models.RestApiError;
 import com.dms.beiam.restapi.operations.v1.register.RegisterIdentityInput;
 import com.dms.beiam.restapi.operations.v1.register.RegisterIdentityResult;
@@ -16,12 +16,12 @@ import static com.dms.beiam.restapi.config.RestApiRoutes.REGISTER_IDENTITY;
 
 @RestController
 @RequiredArgsConstructor
-public class AuthController extends BaseRestController {
-    private final AuthApiRestApiAdapter authApiAdapter;
+public class AuthenticationController extends BaseRestController {
+    private final AuthenticationAdapter authenticationAdapter;
 
     @PostMapping(REGISTER_IDENTITY)
     public ResponseEntity<?> registerIdentity(@RequestBody RegisterIdentityInput input) {
-        Either<RestApiError, RegisterIdentityResult> result = authApiAdapter.registerIdentity(input);
+        Either<RestApiError, RegisterIdentityResult> result = authenticationAdapter.registerIdentity(input);
 
         return handle(result);
     }

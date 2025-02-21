@@ -10,15 +10,9 @@
         <version>${beiam.version}</version>
     </parent>
 
-    <artifactId>boot</artifactId>
+    <artifactId>application</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.dms.beaim</groupId>
-            <artifactId>rest</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>com.dms.beaim</groupId>
             <artifactId>core</artifactId>

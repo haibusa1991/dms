@@ -1,6 +1,5 @@
-package com.dms.beiam.rest.base;
+package com.dms.beiam.restapi.base;
 
-import com.dms.beiam.restapi.base.RestApiResult;
 import com.dms.beiam.restapi.models.RestApiError;
 import io.vavr.control.Either;
 import org.springframework.http.HttpStatus;

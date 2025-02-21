@@ -6,6 +6,7 @@ import com.dms.beiam.apiadapter.model.BeiamError;
 import com.dms.beiam.apiadapter.operations.v1.register.BeiamRegisterIdentityInput;
 import com.dms.beiam.apiadapter.operations.v1.register.BeiamRegisterIdentityResult;
 import com.dms.beiam.apiadapter.operations.v1.register.RegisterIdentity;
+import com.dms.beiam.restapi.base.adapters.AuthenticationAdapter;
 import com.dms.beiam.restapi.models.RestApiError;
 import com.dms.beiam.restapi.operations.v1.register.RegisterIdentityInput;
 import com.dms.beiam.restapi.operations.v1.register.RegisterIdentityResult;
@@ -15,12 +16,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class AuthApiRestApiAdapter {
+public class RestApiAuthenticationAdapter implements AuthenticationAdapter {
 
     private final RegisterIdentity registerIdentity;
     private final AuthControllerMapper mapper;
     private final ModelMapper modelMapper;
 
+    @Override
     public Either<RestApiError, RegisterIdentityResult> registerIdentity(RegisterIdentityInput input) {
         BeiamRegisterIdentityInput coreInput = mapper.toCoreInput(input);
         Either<BeiamError, BeiamRegisterIdentityResult> process = registerIdentity.process(coreInput);
