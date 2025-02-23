@@ -8,11 +8,10 @@ import org.springframework.stereotype.Component;
 public class BusinessErrorHandler extends BaseErrorHandlerComponent {
     @Override
     public BeiamError handle(Throwable throwable) {
-        if(!canHandle(throwable)) {
+
+        if(!(throwable instanceof BusinessException businessException)) {
             return getNext().handle(throwable);
         }
-
-        BusinessException businessException = (BusinessException) throwable;
 
         return BeiamError
                 .builder()
@@ -20,10 +19,5 @@ public class BusinessErrorHandler extends BaseErrorHandlerComponent {
                 .httpStatus(businessException.getHttpStatus())
                 .message(businessException.getMessage())
                 .build();
-    }
-
-    @Override
-    public Boolean canHandle(Throwable throwable) {
-        return throwable instanceof BusinessException;
     }
 }

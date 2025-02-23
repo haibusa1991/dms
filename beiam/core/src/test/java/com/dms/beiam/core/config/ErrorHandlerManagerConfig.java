@@ -1,6 +1,7 @@
 package com.dms.beiam.core.config;
 
 import com.dms.beiam.core.errorhandler.components.BusinessErrorHandler;
+import com.dms.beiam.core.errorhandler.components.DatabaseErrorHandler;
 import com.dms.beiam.core.errorhandler.components.InternalErrorHandler;
 import com.dms.beiam.core.errorhandler.manager.ErrorHandlerManager;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +14,11 @@ public class ErrorHandlerManagerConfig {
     @Bean
     public BusinessErrorHandler businessErrorHandler() {
         return new BusinessErrorHandler();
+    }
+
+    @Bean
+    public DatabaseErrorHandler databaseErrorHandler() {
+        return new DatabaseErrorHandler();
     }
 
     @Bean

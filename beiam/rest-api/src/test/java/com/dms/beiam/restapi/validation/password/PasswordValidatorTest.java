@@ -1,4 +1,4 @@
-package com.dms.beiam.restapi.validators.password;
+package com.dms.beiam.restapi.validation.password;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

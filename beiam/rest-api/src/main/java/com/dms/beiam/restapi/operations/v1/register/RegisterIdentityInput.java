@@ -1,6 +1,6 @@
 package com.dms.beiam.restapi.operations.v1.register;
 
-import com.dms.beiam.restapi.validators.password.Password;
+import com.dms.beiam.restapi.validation.password.Password;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

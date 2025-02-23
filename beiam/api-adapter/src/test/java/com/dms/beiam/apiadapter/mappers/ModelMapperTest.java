@@ -25,7 +25,8 @@ class ModelMapperTest {
 
         RestApiError restApiError = mapper.toRestApiError(beiamError);
 
-        assertEquals(MESSAGE, restApiError.getMessage());
+        assertEquals(1, restApiError.getMessage().size());
+        assertEquals(MESSAGE, restApiError.getMessage().getFirst());
         assertEquals(ERROR_CODE, restApiError.getErrorCode());
         assertEquals(HTTP_STATUS, restApiError.getHttpStatus());
     }

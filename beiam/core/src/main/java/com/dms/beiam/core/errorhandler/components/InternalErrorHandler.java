@@ -20,9 +20,4 @@ public class InternalErrorHandler extends BaseErrorHandlerComponent {
                 .message(throwable.getMessage())
                 .build();
     }
-
-    @Override
-    public Boolean canHandle(Throwable throwable) {
-        return true;
-    }
 }

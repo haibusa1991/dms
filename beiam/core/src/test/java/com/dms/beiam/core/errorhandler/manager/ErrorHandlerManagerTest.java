@@ -5,15 +5,18 @@ import com.dms.beiam.core.config.ErrorHandlerManagerConfig;
 import com.dms.beiam.core.errorhandler.base.ErrorHandlerComponent;
 import com.dms.beiam.core.errorhandler.exceptions.BusinessException;
 import lombok.SneakyThrows;
+import org.hibernate.exception.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.lang.reflect.Field;
+import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ContextConfiguration(classes = {ErrorHandlerManagerConfig.class})
 class ErrorHandlerManagerTest {
     private final String TEST_MESSAGE = "Test message";
+    private final String TEST_SQL_ERROR_MESSAGE = "Test sql error message";
     private final HttpStatus TEST_HTTP_STATUS = HttpStatus.BAD_REQUEST;
     private final String TEST_ERROR_CODE = "TEST_ERROR_CODE";
 
@@ -75,6 +79,18 @@ class ErrorHandlerManagerTest {
         assertEquals(TEST_MESSAGE, handle.getMessage());
         assertEquals(TEST_HTTP_STATUS, handle.getHttpStatus());
         assertEquals(TEST_ERROR_CODE, handle.getErrorCode());
+    }
+
+    @Test
+    void handlesCorrectConstraintViolationException() {
+        SQLException sqlException = new SQLException(TEST_SQL_ERROR_MESSAGE);
+        DataIntegrityViolationException exception = new DataIntegrityViolationException(TEST_MESSAGE, sqlException);
+
+        BeiamError handle = errorHandlerManager.handle(exception);
+
+        assertEquals("Something went wrong", handle.getMessage());
+        assertEquals(HttpStatus.SERVICE_UNAVAILABLE, handle.getHttpStatus());
+        assertEquals("BEIAM-SU", handle.getErrorCode());
     }
 
     @Test

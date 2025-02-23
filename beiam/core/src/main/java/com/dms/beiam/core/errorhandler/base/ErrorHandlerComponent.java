@@ -9,6 +9,4 @@ public interface ErrorHandlerComponent {
     void setNext(ErrorHandlerComponent next);
 
     ErrorHandlerComponent getNext();
-
-    Boolean canHandle(Throwable throwable);
 }
