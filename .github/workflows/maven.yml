@@ -1,12 +1,13 @@
-name: Run tests on PR
+name: Run tests on PR for BEIAM
 
 on:
   pull_request:
     branches: [ "main" ]
 
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 21
@@ -16,4 +17,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B -U test --file pom.xml
+      run: mvn -B -U test --file ./beiam/pom.xml
