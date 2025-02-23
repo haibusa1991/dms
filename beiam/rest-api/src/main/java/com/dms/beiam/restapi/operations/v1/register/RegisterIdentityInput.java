@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class RegisterIdentityInput {
 
     @Email
-    private String email;
+    private String email
 
     @Password
     private String password;
