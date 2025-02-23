@@ -11,12 +11,11 @@
     </parent>
 
     <artifactId>api-adapter</artifactId>
-
     <dependencies>
         <dependency>
             <groupId>com.dms.beaim</groupId>
             <artifactId>rest-api</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${beiam.version}</version>
         </dependency>
     </dependencies>
 </project>

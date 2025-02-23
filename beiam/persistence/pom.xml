@@ -11,4 +11,13 @@
     </parent>
 
     <artifactId>persistence</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${posgresql.driver.version}</version>
+        </dependency>
+
+    </dependencies>
 </project>
