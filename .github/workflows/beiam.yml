@@ -6,7 +6,7 @@ on:
 
 
 jobs:
-  build:
+  test-on-pr:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
@@ -16,5 +16,5 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+    - name: Run tests on PR
       run: mvn -B -U test --file ./beiam/pom.xml
