@@ -12,6 +12,7 @@ import com.nimbusds.jwt.proc.JWTProcessor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -128,39 +129,40 @@ public class SecurityConfig {
         return http.build();
     }
 
-//    @Bean
-//    public RegisteredClientRepository registeredClientRepository() {
-//        RegisteredClient systemClient = RegisteredClient
-//                .withId(UUID.randomUUID().toString())
-//                .clientId("system")
-//                .clientSecret("{noop}secret")
-//                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
-//                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-//                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-//                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-//                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/system")
-//                .postLogoutRedirectUri("http://127.0.0.1:8080/")
-//                .scope(OidcScopes.OPENID)
-//                .scope(OidcScopes.PROFILE)
-//                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-//                .build();
-//
-//        RegisteredClient userClient = RegisteredClient
-//                .withId(UUID.randomUUID().toString())
-//                .clientId("user")
-//                .clientSecret("{noop}secret2")
-//                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
-//                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-//                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-//                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/user")
-//                .postLogoutRedirectUri("http://127.0.0.1:8080/")
-//                .scope(OidcScopes.OPENID)
-//                .scope(OidcScopes.PROFILE)
-//                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
-//                .build();
-//
-//        return new InMemoryRegisteredClientRepository(systemClient, userClient);
-//    }
+    @Bean
+    @Primary
+    public RegisteredClientRepository registeredClientRepository() {
+        RegisteredClient systemClient = RegisteredClient
+                .withId(UUID.randomUUID().toString())
+                .clientId("system")
+                .clientSecret("{noop}secret")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/system")
+                .postLogoutRedirectUri("http://127.0.0.1:8080/")
+                .scope(OidcScopes.OPENID)
+                .scope(OidcScopes.PROFILE)
+                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+                .build();
+
+        RegisteredClient userClient = RegisteredClient
+                .withId(UUID.randomUUID().toString())
+                .clientId("user")
+                .clientSecret("{noop}secret2")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/user")
+                .postLogoutRedirectUri("http://127.0.0.1:8080/")
+                .scope(OidcScopes.OPENID)
+                .scope(OidcScopes.PROFILE)
+                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+                .build();
+
+        return new InMemoryRegisteredClientRepository(systemClient, userClient);
+    }
 
     @Bean
     public JWKSource<SecurityContext> jwkSource() {
