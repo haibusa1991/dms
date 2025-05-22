@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RegisterIdentityOperation implements RegisterIdentity {
     private final IdentityRepository identityRepository;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
     private final ErrorHandler errorHandler;
 
 
@@ -29,7 +29,7 @@ public class RegisterIdentityOperation implements RegisterIdentity {
             Identity identity = Identity
                     .builder()
                     .email(input.getEmail())
-                    .password(passwordEncoder.encode(input.getPassword()))
+//                    .password(passwordEncoder.encode(input.getPassword()))
                     .identityRole(IdentityRole.READER)
                     .build();
 
