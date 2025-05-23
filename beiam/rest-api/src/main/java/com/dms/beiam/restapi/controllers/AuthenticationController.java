@@ -1,11 +1,10 @@
 package com.dms.beiam.restapi.controllers;
 
-import com.dms.beiam.restapi.base.BaseRestController;
-import com.dms.beiam.restapi.base.adapters.AuthenticationAdapter;
-import com.dms.beiam.restapi.models.RestApiError;
+import com.dms.beiam.restapi.ResultHandler;
+import com.dms.beiam.restapi.adapters.AuthenticationAdapter;
 import com.dms.beiam.restapi.operations.v1.register.RegisterIdentityInput;
 import com.dms.beiam.restapi.operations.v1.register.RegisterIdentityResult;
-import io.vavr.control.Either;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +15,14 @@ import static com.dms.beiam.restapi.config.RestApiRoutes.REGISTER_IDENTITY;
 
 @RestController
 @RequiredArgsConstructor
-public class AuthenticationController extends BaseRestController {
+public class AuthenticationController {
+    private final ResultHandler resultHandler;
     private final AuthenticationAdapter authenticationAdapter;
 
     @PostMapping(REGISTER_IDENTITY)
-    public ResponseEntity<?> registerIdentity(@RequestBody RegisterIdentityInput input) {
-        Either<RestApiError, RegisterIdentityResult> result = authenticationAdapter.registerIdentity(input);
+    public ResponseEntity<?> registerIdentity(@Valid @RequestBody RegisterIdentityInput input) {
+        RegisterIdentityResult result = authenticationAdapter.registerIdentity(input);
 
-        return handle(result);
+        return resultHandler.handle(result);
     }
 }

@@ -24,11 +24,5 @@
             <artifactId>persistence</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.dms.beaim</groupId>
-            <artifactId>service-adapter</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
     </dependencies>
 </project>

@@ -1,6 +1,6 @@
-package com.dms.beiam.apiadapter.operations.v1.register;
+package com.dms.beiam.apiadapter.commands.v1.register;
 
-import com.dms.beiam.apiadapter.base.processor.ProcessorResult;
+import com.dms.beiam.apiadapter.base.processor.CommandResult;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Getter
-public class BeiamRegisterIdentityResult implements ProcessorResult {
+public class BeiamRegisterIdentityResult implements CommandResult {
 
     private UUID identityId;
 }

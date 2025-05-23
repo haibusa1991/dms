@@ -18,14 +18,11 @@
 		<module>api-adapter</module>
 		<module>core</module>
 		<module>persistence</module>
-		<module>service</module>
-		<module>service-adapter</module>
 	</modules>
 
 	<properties>
 		<java.version>21</java.version>
 		<beiam.version>0.0.1-SNAPSHOT</beiam.version>
-		<vavr.io.version>0.10.5</vavr.io.version>
 		<mapstruct.version>1.6.3</mapstruct.version>
 		<springdoc.version>2.8.4</springdoc.version>
 		<posgresql.driver.version>42.7.5</posgresql.driver.version>
@@ -73,12 +70,6 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>io.vavr</groupId>
-			<artifactId>vavr</artifactId>
-			<version>${vavr.io.version}</version>
 		</dependency>
 
 		<dependency>

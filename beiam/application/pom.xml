@@ -30,24 +30,11 @@
                 <version>3.7.0</version>
                 <configuration>
                     <annotationProcessors>
-                        <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
-                        <processor>org.mapstruct.ap.MappingProcessor</processor>
+                        <command>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</command>
+                        <command>org.mapstruct.ap.MappingProcessor</command>
                     </annotationProcessors>
                 </configuration>
             </plugin>
-
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <annotationProcessorPaths>-->
-<!--                        <path>-->
-<!--                            <groupId>org.projectlombok</groupId>-->
-<!--                            <artifactId>lombok</artifactId>-->
-<!--                        </path>-->
-<!--                    </annotationProcessorPaths>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
