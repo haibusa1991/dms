@@ -1,9 +1,9 @@
 package com.dms.beiam.core.config;
 
-import com.dms.beiam.core.errorhandler.components.BusinessErrorHandler;
-import com.dms.beiam.core.errorhandler.components.DatabaseErrorHandler;
-import com.dms.beiam.core.errorhandler.components.InternalErrorHandler;
-import com.dms.beiam.core.errorhandler.manager.ErrorHandlerManager;
+import com.dms.beiam.restapi.errorhandler.components.BusinessErrorHandler;
+import com.dms.beiam.restapi.errorhandler.components.DatabaseErrorHandler;
+import com.dms.beiam.restapi.errorhandler.components.InternalErrorHandler;
+import com.dms.beiam.restapi.errorhandler.manager.ErrorHandlerManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

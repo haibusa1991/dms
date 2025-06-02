@@ -1,17 +1,17 @@
 package com.dms.beiam.core.errorhandler.manager;
 
-import com.dms.beiam.apiadapter.model.BeiamError;
 import com.dms.beiam.core.config.ErrorHandlerManagerConfig;
-import com.dms.beiam.core.errorhandler.base.ErrorHandlerComponent;
-import com.dms.beiam.core.errorhandler.exceptions.BusinessException;
+import com.dms.beiam.restapi.errorhandler.base.ErrorHandlerComponent;
+import com.dms.beiam.restapi.errorhandler.exceptions.BusinessException;
+import com.dms.beiam.restapi.errorhandler.manager.ErrorHandlerManager;
 import lombok.SneakyThrows;
-import org.hibernate.exception.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -19,6 +19,9 @@ import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.List;
 
+import static com.dms.beiam.restapi.errorhandler.BeaimErrorCodes.INTERNAL_SERVER_ERROR;
+import static com.dms.beiam.restapi.errorhandler.BeaimErrorCodes.SERVICE_UNAVAILABLE;
+import static com.dms.beiam.restapi.errorhandler.BeaimErrorMessages.SOMETHING_WENT_WRONG;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -74,11 +77,11 @@ class ErrorHandlerManagerTest {
     void handlesCorrectBusinessException() {
         BusinessException businessException = new BusinessException(TEST_MESSAGE, TEST_HTTP_STATUS, TEST_ERROR_CODE);
 
-        BeiamError handle = errorHandlerManager.handle(businessException);
+        ProblemDetail result = errorHandlerManager.handle(businessException);
 
-        assertEquals(TEST_MESSAGE, handle.getMessage());
-        assertEquals(TEST_HTTP_STATUS, handle.getHttpStatus());
-        assertEquals(TEST_ERROR_CODE, handle.getErrorCode());
+        assertEquals(TEST_MESSAGE, result.getDetail());
+        assertEquals(TEST_HTTP_STATUS.value(), result.getStatus());
+        assertEquals(TEST_ERROR_CODE, result.getTitle());
     }
 
     @Test
@@ -86,21 +89,21 @@ class ErrorHandlerManagerTest {
         SQLException sqlException = new SQLException(TEST_SQL_ERROR_MESSAGE);
         DataIntegrityViolationException exception = new DataIntegrityViolationException(TEST_MESSAGE, sqlException);
 
-        BeiamError handle = errorHandlerManager.handle(exception);
+        ProblemDetail result = errorHandlerManager.handle(exception);
 
-        assertEquals("Something went wrong", handle.getMessage());
-        assertEquals(HttpStatus.SERVICE_UNAVAILABLE, handle.getHttpStatus());
-        assertEquals("BEIAM-SU", handle.getErrorCode());
+        assertEquals(SOMETHING_WENT_WRONG, result.getDetail());
+        assertEquals(HttpStatus.SERVICE_UNAVAILABLE.value(), result.getStatus());
+        assertEquals(SERVICE_UNAVAILABLE, result.getTitle());
     }
 
     @Test
     void returnsInternalErrorWhenNoHandlerFound() {
         Exception exception = new Exception(TEST_MESSAGE);
 
-        BeiamError handle = errorHandlerManager.handle(exception);
+        ProblemDetail result = errorHandlerManager.handle(exception);
 
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, handle.getHttpStatus());
-        assertEquals("BEIAM-ISE", handle.getErrorCode());
-        assertEquals(TEST_MESSAGE, handle.getMessage());
+        assertEquals(TEST_MESSAGE, result.getDetail());
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), result.getStatus());
+        assertEquals(INTERNAL_SERVER_ERROR, result.getTitle());
     }
 }

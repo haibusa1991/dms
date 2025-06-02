@@ -3,7 +3,7 @@ package com.dms.beiam.core.commands.v1;
 import com.dms.beiam.apiadapter.commands.v1.register.BeiamRegisterIdentityInput;
 import com.dms.beiam.apiadapter.commands.v1.register.BeiamRegisterIdentityResult;
 import com.dms.beiam.apiadapter.commands.v1.register.RegisterIdentity;
-import com.dms.beiam.core.errorhandler.base.ErrorHandler;
+import com.dms.beiam.restapi.errorhandler.base.ErrorHandler;
 import com.dms.beiam.persistence.entities.Identity;
 import com.dms.beiam.persistence.enumeration.IdentityRole;
 import com.dms.beiam.persistence.repositories.IdentityRepository;

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class ResultHandler {
 
-    public ResponseEntity<? extends RestApiResult> handle(RestApiResult result) {
+    public <RESULT extends RestApiResult> ResponseEntity<RESULT> handle(RESULT result) {
         return handle(result, HttpStatus.OK);
     }
 
-    public ResponseEntity<? extends RestApiResult> handle(RestApiResult result, HttpStatus status) {
+    public <RESULT extends RestApiResult> ResponseEntity<RESULT> handle(RESULT result, HttpStatus status) {
         return new ResponseEntity<>(result, status);
     }
 }

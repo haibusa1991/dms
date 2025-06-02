@@ -2,6 +2,7 @@ package com.dms.beiam.restapi.controllers;
 
 import com.dms.beiam.restapi.ResultHandler;
 import com.dms.beiam.restapi.adapters.AuthenticationAdapter;
+import com.dms.beiam.restapi.base.RestApiResult;
 import com.dms.beiam.restapi.operations.v1.register.RegisterIdentityInput;
 import com.dms.beiam.restapi.operations.v1.register.RegisterIdentityResult;
 import jakarta.validation.Valid;
@@ -20,7 +21,7 @@ public class AuthenticationController {
     private final AuthenticationAdapter authenticationAdapter;
 
     @PostMapping(REGISTER_IDENTITY)
-    public ResponseEntity<?> registerIdentity(@Valid @RequestBody RegisterIdentityInput input) {
+    public ResponseEntity<RestApiResult> registerIdentity(@Valid @RequestBody RegisterIdentityInput input) {
         RegisterIdentityResult result = authenticationAdapter.registerIdentity(input);
 
         return resultHandler.handle(result);
