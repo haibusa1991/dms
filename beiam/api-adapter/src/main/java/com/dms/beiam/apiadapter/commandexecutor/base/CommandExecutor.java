@@ -1,9 +1,7 @@
-package com.dms.beiam.apiadapter.base.adapter;
+package com.dms.beiam.apiadapter.commandexecutor.base;
 
 
-import com.dms.beiam.apiadapter.base.processor.Command;
-import com.dms.beiam.apiadapter.base.processor.CommandInput;
-import com.dms.beiam.apiadapter.base.processor.CommandResult;
+import com.dms.beiam.apiadapter.base.adapter.AdapterMapper;
 import com.dms.beiam.restapi.base.RestApiInput;
 import com.dms.beiam.restapi.base.RestApiResult;
 
