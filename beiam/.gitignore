@@ -8,4 +8,5 @@ target/
 *.iml
 *.ipr
 **/.flattened-pom.xml
+.attach_*
 
