@@ -1,9 +1,8 @@
-package com.dms.beiam.core.errorhandler.manager;
+package com.dms.beiam.restapi.errorhandler.manager;
 
-import com.dms.beiam.core.config.ErrorHandlerManagerConfig;
+import com.dms.beiam.restapi.config.ErrorHandlerConfig;
 import com.dms.beiam.restapi.errorhandler.base.ErrorHandlerComponent;
 import com.dms.beiam.restapi.errorhandler.exceptions.BusinessException;
-import com.dms.beiam.restapi.errorhandler.manager.ErrorHandlerManager;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +24,7 @@ import static com.dms.beiam.restapi.errorhandler.BeaimErrorMessages.SOMETHING_WE
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {ErrorHandlerManagerConfig.class})
+@ContextConfiguration(classes = {ErrorHandlerConfig.class})
 class ErrorHandlerManagerTest {
     private final String TEST_MESSAGE = "Test message";
     private final String TEST_SQL_ERROR_MESSAGE = "Test sql error message";

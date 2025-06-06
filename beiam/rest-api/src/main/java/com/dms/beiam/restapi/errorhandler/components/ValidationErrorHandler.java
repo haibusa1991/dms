@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import java.util.List;
 
 import static com.dms.beiam.restapi.errorhandler.BeaimErrorCodes.BAD_REQUEST;
+import static com.dms.beiam.restapi.errorhandler.BeaimErrorCodes.INPUT_CONSTRAINT_VIOLATION;
 
 @Component
 public class ValidationErrorHandler extends BaseErrorHandlerComponent {
@@ -28,6 +29,6 @@ public class ValidationErrorHandler extends BaseErrorHandlerComponent {
                 .map(violation -> violation.getPropertyPath().toString() + " " + violation.getMessage())
                 .toList();
 
-        return getProblemDetail(HttpStatus.BAD_REQUEST, String.join("; ", errors), BAD_REQUEST);
+        return getProblemDetail(HttpStatus.BAD_REQUEST, String.join("; ", errors), INPUT_CONSTRAINT_VIOLATION);
     }
 }

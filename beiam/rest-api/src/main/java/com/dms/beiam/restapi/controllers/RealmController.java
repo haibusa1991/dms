@@ -20,7 +20,7 @@ public class RealmController {
     private final RealmAdapter realmAdapter;
 
     @PostMapping(REGISTER_REALM)
-    public ResponseEntity<RealmRegisterResult> registerIdentity(@Valid @RequestBody RealmRegisterInput input) {
+    public ResponseEntity<RealmRegisterResult> realmRegister(@Valid @RequestBody RealmRegisterInput input) {
         return resultHandler.handle(realmAdapter.realmRegister(input));
     }
 }
