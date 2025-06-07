@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Run tests on PR
-      run: mvn -B -U test --file ./beiam/pom.xml
+      run: mvn -B -U test --file ./pom.xml
   build:
     name: Build and analyze
     runs-on: ubuntu-latest
@@ -49,4 +49,4 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=haibusa1991_dms --file ./beiam/pom.xml
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=haibusa1991_dms --file ./pom.xml
