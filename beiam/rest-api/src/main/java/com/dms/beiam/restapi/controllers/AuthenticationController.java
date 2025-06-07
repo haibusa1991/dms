@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.dms.beiam.restapi.config.RestApiRoutes.REGISTER_IDENTITY;
+import static com.dms.beiam.restapi.configuration.RestApiRoutes.REGISTER_IDENTITY;
 
 @RestController
 @RequiredArgsConstructor

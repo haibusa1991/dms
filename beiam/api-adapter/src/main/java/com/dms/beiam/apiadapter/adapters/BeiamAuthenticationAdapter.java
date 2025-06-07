@@ -1,6 +1,6 @@
 package com.dms.beiam.apiadapter.adapters;
 
-import com.dms.beiam.apiadapter.base.adapter.CommandExecutor;
+import com.dms.beiam.apiadapter.commandexecutor.base.CommandExecutor;
 import com.dms.beiam.apiadapter.commands.v1.register.RegisterIdentity;
 import com.dms.beiam.apiadapter.mappers.AuthControllerMapper;
 import com.dms.beiam.restapi.adapters.AuthenticationAdapter;

@@ -1,4 +1,4 @@
-package com.dms.beiam.restapi.config;
+package com.dms.beiam.restapi.configuration;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;

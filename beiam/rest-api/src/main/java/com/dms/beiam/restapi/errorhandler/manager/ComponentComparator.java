@@ -30,7 +30,7 @@ public class ComponentComparator implements Comparator<ErrorHandlerComponent> {
                 .map(Order::value)
                 .orElse(2);
 
-        if (component1order == 2 || component2order == 2) {
+        if (component1order == 2 && component2order == 2) {
             return 0;
         }
 

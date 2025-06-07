@@ -1,4 +1,4 @@
-package com.dms.beiam.apiadapter.commands.v1.register;
+package com.dms.beiam.apiadapter.commands.system.v1.realm.register;
 
 import com.dms.beiam.apiadapter.commandexecutor.base.CommandResult;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Getter
-public class BeiamRegisterIdentityResult implements CommandResult {
+public class BeiamRealmRegisterResult implements CommandResult {
 
-    private UUID identityId;
+    private UUID realmId;
 }
