@@ -1,4 +1,6 @@
-import base.BaseIntegrationTest;
+package com.dms.beiam.application.integration;
+
+import com.dms.beiam.application.integration.base.BaseIntegrationTest;
 import com.dms.beiam.persistence.entities.Realm;
 import com.dms.beiam.restapi.operations.system.v1.realm.register.RealmRegisterInput;
 import com.jayway.jsonpath.JsonPath;
@@ -64,15 +66,6 @@ public class RegisterRealmTest extends BaseIntegrationTest {
                 .realmName(existingRealmName)
                 .realmAdminEmail("admin@realm.com")
                 .build();
-
-//        {
-//            "type" : "about:blank",
-//                "title" : "BRR001",
-//                "status" : 400,
-//                "detail" : "Realm with the given name already exists.",
-//                "instance" : "/system/api/v1/realm/register",
-//                "properties" : null
-//        }
 
         mockMvc.perform(MockMvcRequestBuilders
                         .post(ROUTE)

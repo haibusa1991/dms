@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.dms.beaim</groupId>
+        <groupId>com.dms.beiam</groupId>
         <artifactId>beiam</artifactId>
         <version>${beiam.version}</version>
     </parent>
@@ -14,13 +14,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.dms.beaim</groupId>
+            <groupId>com.dms.beiam</groupId>
             <artifactId>api-adapter</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.dms.beaim</groupId>
+            <groupId>com.dms.beiam</groupId>
             <artifactId>persistence</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

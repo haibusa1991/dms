@@ -1,4 +1,4 @@
-package base;
+package com.dms.beiam.application.integration.base;
 
 import com.dms.beiam.application.BeiamApplication;
 import com.dms.beiam.persistence.repositories.RealmRepository;
@@ -13,7 +13,7 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.containers.PostgreSQLContainer;
 
-@SpringBootTest(classes = BeiamApplication.class)
+@SpringBootTest
 @AutoConfigureMockMvc
 public class BaseIntegrationTest {
 
