@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.UUID;
 
-import static com.dms.beiam.restapi.config.RestApiRoutes.REGISTER_REALM;
+import static com.dms.beiam.restapi.configuration.RestApiRoutes.REGISTER_REALM;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -228,7 +228,7 @@ class RealmControllerRealmRegisterTest extends BaseControllerTest {
                         .post(ROUTE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(content))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.realmId").value(realmId.toString()));
     }
 }

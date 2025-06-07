@@ -44,7 +44,7 @@ class RealmRegisterCommandTest {
         BusinessException exception = assertThrows(BusinessException.class, () -> command.execute(INPUT));
 
         assertEquals("Realm with the given name already exists.", exception.getMessage());
-        assertEquals(HttpStatus.BAD_REQUEST, exception.getHttpStatus());
+        assertEquals(HttpStatus.CONFLICT, exception.getHttpStatus());
         assertEquals("BRR001", exception.getErrorCode());
     }
 

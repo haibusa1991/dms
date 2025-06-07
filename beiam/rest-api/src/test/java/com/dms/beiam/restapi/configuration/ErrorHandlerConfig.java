@@ -1,4 +1,4 @@
-package com.dms.beiam.restapi.config;
+package com.dms.beiam.restapi.configuration;
 
 import com.dms.beiam.restapi.errorhandler.components.BusinessErrorHandler;
 import com.dms.beiam.restapi.errorhandler.components.DatabaseErrorHandler;

@@ -1,6 +1,6 @@
 package com.dms.beiam.restapi.errorhandler.manager;
 
-import com.dms.beiam.restapi.config.ErrorHandlerConfig;
+import com.dms.beiam.restapi.configuration.ErrorHandlerConfig;
 import com.dms.beiam.restapi.errorhandler.base.ErrorHandlerComponent;
 import com.dms.beiam.restapi.errorhandler.exceptions.BusinessException;
 import lombok.SneakyThrows;

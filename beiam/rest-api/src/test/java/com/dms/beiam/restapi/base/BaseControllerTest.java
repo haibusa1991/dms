@@ -2,9 +2,9 @@ package com.dms.beiam.restapi.base;
 
 import com.dms.beiam.restapi.ResultHandler;
 import com.dms.beiam.restapi.adapters.RealmAdapter;
-import com.dms.beiam.restapi.config.BootConfig;
-import com.dms.beiam.restapi.config.ErrorHandlerConfig;
-import com.dms.beiam.restapi.config.SecurityConfig;
+import com.dms.beiam.restapi.configuration.BootConfig;
+import com.dms.beiam.restapi.configuration.ErrorHandlerConfig;
+import com.dms.beiam.restapi.configuration.SecurityConfig;
 import com.dms.beiam.restapi.controllers.RealmController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

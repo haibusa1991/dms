@@ -18,6 +18,7 @@
         <module>api-adapter</module>
         <module>core</module>
         <module>persistence</module>
+        <module>integration-testing</module>
     </modules>
 
     <properties>
@@ -28,6 +29,7 @@
         <posgresql.driver.version>42.7.5</posgresql.driver.version>
         <sonar.organization>haibusa1991</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <testcontainers.version>1.21.1</testcontainers.version>
     </properties>
 
     <dependencies>

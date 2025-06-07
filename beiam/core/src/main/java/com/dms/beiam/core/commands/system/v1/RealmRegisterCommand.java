@@ -21,7 +21,7 @@ public class RealmRegisterCommand implements RealmRegister {
     public BeiamRealmRegisterResult execute(BeiamRealmRegisterInput input) {
 
         if (realmRepository.existsByRealmName(input.getRealmName())) {
-            throw new BusinessException("Realm with the given name already exists.", HttpStatus.BAD_REQUEST, REALM_ALREADY_EXISTS);
+            throw new BusinessException("Realm with the given name already exists.", HttpStatus.CONFLICT, REALM_ALREADY_EXISTS);
         }
 
         Realm realm = Realm

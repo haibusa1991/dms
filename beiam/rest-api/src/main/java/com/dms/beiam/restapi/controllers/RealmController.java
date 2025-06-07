@@ -6,12 +6,13 @@ import com.dms.beiam.restapi.operations.system.v1.realm.register.RealmRegisterIn
 import com.dms.beiam.restapi.operations.system.v1.realm.register.RealmRegisterResult;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.dms.beiam.restapi.config.RestApiRoutes.REGISTER_REALM;
+import static com.dms.beiam.restapi.configuration.RestApiRoutes.REGISTER_REALM;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,6 +22,6 @@ public class RealmController {
 
     @PostMapping(REGISTER_REALM)
     public ResponseEntity<RealmRegisterResult> realmRegister(@Valid @RequestBody RealmRegisterInput input) {
-        return resultHandler.handle(realmAdapter.realmRegister(input));
+        return resultHandler.handle(realmAdapter.realmRegister(input), HttpStatus.CREATED);
     }
 }

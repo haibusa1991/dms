@@ -1,4 +1,4 @@
-package com.dms.beiam.restapi.config;
+package com.dms.beiam.restapi.configuration;
 
 public class RestApiRoutes {
     public static final String API_V1 = "/api/v1";

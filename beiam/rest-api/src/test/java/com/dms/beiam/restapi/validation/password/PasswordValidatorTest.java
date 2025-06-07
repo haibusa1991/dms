@@ -1,5 +1,6 @@
 package com.dms.beiam.restapi.validation.password;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -9,6 +10,9 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class PasswordValidatorTest {
+
+    private final PasswordValidator validator = new PasswordValidator();
+
     static Stream<Arguments> returnsFalseWhenPasswordInvalid() {
         String tooLong = "Qwerty123@".repeat(13);
 
@@ -29,7 +33,21 @@ class PasswordValidatorTest {
     @ParameterizedTest
     @MethodSource
     void returnsFalseWhenPasswordInvalid(String password) {
-        PasswordValidator validator = new PasswordValidator();
         assertFalse(validator.isValid(password, null));
+    }
+
+    @Test
+    void returnsFalseWhenValueNull() {
+        assertFalse(validator.isValid(null, null));
+    }
+
+    @Test
+    void returnsFalseWhenValueEmpty() {
+        assertFalse(validator.isValid("", null));
+    }
+
+    @Test
+    void returnsTrueWhenValueBlank() {
+        assertFalse(validator.isValid(" ", null));
     }
 }

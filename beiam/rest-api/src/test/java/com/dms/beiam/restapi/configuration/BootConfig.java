@@ -1,4 +1,4 @@
-package com.dms.beiam.restapi.config;
+package com.dms.beiam.restapi.configuration;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
